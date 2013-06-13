@@ -17,4 +17,4 @@ Usage of this tool to download pirated or copy-righted music is completely prohi
 at their own risk and consequences. Downloading and using this tool automatically liberates the author from any
 damages, risk or consequences that such an action would cause.
 
-If you are unsure of what you may be doing, please DO NOT USE this tool.
+If you are unsure of what you may be doing, please **DO NOT USE** this tool.
