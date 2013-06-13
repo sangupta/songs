@@ -171,6 +171,11 @@ public class SongsDownloader {
         	return;
         }
         
+        if(page < 0 || page >= titles.size()) {
+        	System.out.println("Number not in range... exiting!");
+        	return;
+        }
+        
         String title = titles.get(page);
         if(AssertUtils.isEmpty(title)) {
         	System.out.println("Wrong index... exiting!");
