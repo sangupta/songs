@@ -114,8 +114,8 @@ public class SongsDownloader {
 	        	return;
 	        }
 	        
-			table = document.getElementById("table191");
-			anchors = table.getElementsByTag("a");
+//			table = document.getElementById("table191");
+			anchors = document.getElementsByTag("a");
 	        letterCache.put(letter, anchors);
 	        
 	        if(anchors == null) {
