@@ -23,6 +23,7 @@ package com.sangupta.songs;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -149,6 +150,7 @@ public class SongsDownloader {
         }
         
         List<String> titles = new ArrayList<String>(movies.keySet());
+        Collections.sort(titles);
         for(int index = 0; index < titles.size(); index++) {
         	System.out.println(index + ": " + titles.get(index));
         }
