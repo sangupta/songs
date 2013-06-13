@@ -52,12 +52,21 @@ import com.sangupta.jerry.util.UriUtils;
  */
 public class SongsDownloader {
 	
+	/**
+	 * Holds in-memory cache of anchors that we have found for the first letter
+	 * of the movie title.
+	 */
 	private static final Map<String, Elements> letterCache = new HashMap<String, Elements>();
 	
+	/**
+	 * Main entry handler.
+	 * 
+	 * @param args
+	 */
     public static void main( String[] args ) {
     	System.out.println("Welcome to Song Downloader v1.0.");
     	do {
-	    	String input = ConsoleUtils.readLine("\nEnter the movie name: ", true);
+	    	String input = ConsoleUtils.readLine("\nEnter the first few letters of the movie name: ", true);
 	        if(AssertUtils.isEmpty(input)) {
 	        	System.out.println("No movie title provided... exiting!");
 	        	return;
@@ -67,6 +76,11 @@ public class SongsDownloader {
     	} while(true);
     }
     
+    /**
+     * Download the songs for the given movie prefix.
+     * 
+     * @param input
+     */
     private static void downloadMovieSongs(String input) {
         // find list of all titles with that letter
         input = input.toLowerCase();
@@ -80,7 +94,13 @@ public class SongsDownloader {
         final String letter = String.valueOf(input.charAt(0));
         
         if(!letterCache.containsKey(letter)) {
-	        String url = "http://www.songspk.name/" + input.charAt(0) + "_list.html";
+    		String url;
+        	if(Character.isDigit(input.charAt(0))) {
+        		url = "http://www.songspk.name/numeric_list.html";
+        	} else {
+				url = "http://www.songspk.name/" + input.charAt(0) + "_list.html";
+        	}
+        	
 			response = WebInvoker.getResponse(url);
 	        if(response == null || !response.isSuccess()) {
 	        	System.out.println("Unable to fetch a list of all movie titles... exiting!");
